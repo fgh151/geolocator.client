@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -34,13 +33,3 @@ lib/model/models_user_location.dart
 lib/model/models_user_login_form.dart
 lib/model/models_user_register_form.dart
 pubspec.yaml
-test/group_api_test.dart
-test/location_api_test.dart
-test/models_group_test.dart
-test/models_http_error_test.dart
-test/models_location_form_test.dart
-test/models_user_location_test.dart
-test/models_user_login_form_test.dart
-test/models_user_register_form_test.dart
-test/models_user_test.dart
-test/user_api_test.dart
