@@ -46,32 +46,34 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('BearerAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = GroupApi();
-final group = ModelsGroup(); // ModelsGroup | Create new group
+final id = id_example; // String | Group id
 
 try {
-    final result = api_instance.groupCreatePost(group);
-    print(result);
+    api_instance.groupIdDelete(id);
 } catch (e) {
-    print('Exception when calling GroupApi->groupCreatePost: $e\n');
+    print('Exception when calling GroupApi->groupIdDelete: $e\n');
 }
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GroupApi* | [**groupCreatePost**](doc//GroupApi.md#groupcreatepost) | **POST** /group/create | Create group
 *GroupApi* | [**groupIdDelete**](doc//GroupApi.md#groupiddelete) | **DELETE** /group/{id} | Delete group
+*GroupApi* | [**groupIdGet**](doc//GroupApi.md#groupidget) | **GET** /group/{id} | Group info
 *GroupApi* | [**groupIdInviteDelete**](doc//GroupApi.md#groupidinvitedelete) | **DELETE** /group/{id}/invite | Delete users from group
-*GroupApi* | [**groupIdInvitePost**](doc//GroupApi.md#groupidinvitepost) | **POST** /group/{id}/invite | Invite user to group
+*GroupApi* | [**groupIdInvitePost**](doc//GroupApi.md#groupidinvitepost) | **POST** /group/{id}/invite | InviteToGroup user to group
+*GroupApi* | [**groupIdPatch**](doc//GroupApi.md#groupidpatch) | **PATCH** /group/{id} | Update group
+*GroupApi* | [**groupListGet**](doc//GroupApi.md#grouplistget) | **GET** /group/list | Get user groups
+*GroupApi* | [**groupPost**](doc//GroupApi.md#grouppost) | **POST** /group | Create group
 *LocationApi* | [**locationPost**](doc//LocationApi.md#locationpost) | **POST** /location | Set user location
 *LocationApi* | [**locationUsersGet**](doc//LocationApi.md#locationusersget) | **GET** /location/users | Get users location
 *UserApi* | [**userLoginPost**](doc//UserApi.md#userloginpost) | **POST** /user/login | Login user
-*UserApi* | [**userRegisterPost**](doc//UserApi.md#userregisterpost) | **POST** /user/register | Register new user
-*UserApi* | [**userUpdatePatch**](doc//UserApi.md#userupdatepatch) | **PATCH** /user/update | Update user info
+*UserApi* | [**userPatch**](doc//UserApi.md#userpatch) | **PATCH** /user | Update user info
+*UserApi* | [**userPost**](doc//UserApi.md#userpost) | **POST** /user | Register new user
 
 
 ## Documentation For Models
@@ -88,7 +90,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## BearerAuth
+Authentication schemes defined for the API:
+### BearerAuth
 
 - **Type**: API key
 - **API key parameter name**: Authorization

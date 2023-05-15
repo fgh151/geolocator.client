@@ -16,64 +16,6 @@ class GroupApi {
 
   final ApiClient apiClient;
 
-  /// Create group
-  ///
-  /// Create group
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [ModelsGroup] group (required):
-  ///   Create new group
-  Future<Response> groupCreatePostWithHttpInfo(ModelsGroup group,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/group/create';
-
-    // ignore: prefer_final_locals
-    Object? postBody = group;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Create group
-  ///
-  /// Create group
-  ///
-  /// Parameters:
-  ///
-  /// * [ModelsGroup] group (required):
-  ///   Create new group
-  Future<ModelsGroup?> groupCreatePost(ModelsGroup group,) async {
-    final response = await groupCreatePostWithHttpInfo(group,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsGroup',) as ModelsGroup;
-    
-    }
-    return null;
-  }
-
   /// Delete group
   ///
   /// Delete group
@@ -123,6 +65,65 @@ class GroupApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// Group info
+  ///
+  /// Group info
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Group id
+  Future<Response> groupIdGetWithHttpInfo(String id,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/group/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Group info
+  ///
+  /// Group info
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Group id
+  Future<ModelsGroup?> groupIdGet(String id,) async {
+    final response = await groupIdGetWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsGroup',) as ModelsGroup;
+    
+    }
+    return null;
   }
 
   /// Delete users from group
@@ -182,9 +183,9 @@ class GroupApi {
     }
   }
 
-  /// Invite user to group
+  /// InviteToGroup user to group
   ///
-  /// Invite to group
+  /// InviteToGroup to group
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -221,9 +222,9 @@ class GroupApi {
     );
   }
 
-  /// Invite user to group
+  /// InviteToGroup user to group
   ///
-  /// Invite to group
+  /// InviteToGroup to group
   ///
   /// Parameters:
   ///
@@ -237,5 +238,179 @@ class GroupApi {
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+  }
+
+  /// Update group
+  ///
+  /// Update group
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Group id
+  ///
+  /// * [ModelsGroup] group (required):
+  ///   Update group data
+  Future<Response> groupIdPatchWithHttpInfo(String id, ModelsGroup group,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/group/{id}'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object? postBody = group;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update group
+  ///
+  /// Update group
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///   Group id
+  ///
+  /// * [ModelsGroup] group (required):
+  ///   Update group data
+  Future<ModelsGroup?> groupIdPatch(String id, ModelsGroup group,) async {
+    final response = await groupIdPatchWithHttpInfo(id, group,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsGroup',) as ModelsGroup;
+    
+    }
+    return null;
+  }
+
+  /// Get user groups
+  ///
+  /// Get user groups
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> groupListGetWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/group/list';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get user groups
+  ///
+  /// Get user groups
+  Future<List<ModelsGroup>?> groupListGet() async {
+    final response = await groupListGetWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<ModelsGroup>') as List)
+        .cast<ModelsGroup>()
+        .toList();
+
+    }
+    return null;
+  }
+
+  /// Create group
+  ///
+  /// Create group
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ModelsGroup] group (required):
+  ///   Create new group
+  Future<Response> groupPostWithHttpInfo(ModelsGroup group,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/group';
+
+    // ignore: prefer_final_locals
+    Object? postBody = group;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Create group
+  ///
+  /// Create group
+  ///
+  /// Parameters:
+  ///
+  /// * [ModelsGroup] group (required):
+  ///   Create new group
+  Future<ModelsGroup?> groupPost(ModelsGroup group,) async {
+    final response = await groupPostWithHttpInfo(group,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsGroup',) as ModelsGroup;
+    
+    }
+    return null;
   }
 }

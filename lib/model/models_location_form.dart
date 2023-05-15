@@ -94,7 +94,7 @@ class ModelsLocationForm {
     return null;
   }
 
-  static List<ModelsLocationForm>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ModelsLocationForm> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ModelsLocationForm>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -125,12 +125,10 @@ class ModelsLocationForm {
   static Map<String, List<ModelsLocationForm>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ModelsLocationForm>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ModelsLocationForm.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ModelsLocationForm.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

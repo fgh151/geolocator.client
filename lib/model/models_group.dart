@@ -144,13 +144,13 @@ class ModelsGroup {
         id: mapValueOfType<String>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         owner: ModelsUser.fromJson(json[r'owner']),
-        users: ModelsUser.listFromJson(json[r'users']) ?? const [],
+        users: ModelsUser.listFromJson(json[r'users']),
       );
     }
     return null;
   }
 
-  static List<ModelsGroup>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ModelsGroup> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ModelsGroup>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -181,12 +181,10 @@ class ModelsGroup {
   static Map<String, List<ModelsGroup>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ModelsGroup>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ModelsGroup.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = ModelsGroup.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

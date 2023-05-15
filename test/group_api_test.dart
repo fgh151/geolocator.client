@@ -17,9 +17,9 @@ void main() {
   // final instance = GroupApi();
 
   group('tests for GroupApi', () {
-    // Create group
+    // Update group
     //
-    // Create group
+    // Update group
     //
     //Future<ModelsGroup> groupCreatePost(ModelsGroup group) async
     test('test groupCreatePost', () async {
@@ -44,9 +44,9 @@ void main() {
       // TODO
     });
 
-    // Invite user to group
+    // InviteToGroup user to group
     //
-    // Invite to group
+    // InviteToGroup to group
     //
     //Future groupIdInvitePost(String id, List<String> users) async
     test('test groupIdInvitePost', () async {

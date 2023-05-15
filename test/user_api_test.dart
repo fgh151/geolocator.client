@@ -30,8 +30,8 @@ void main() {
     //
     // Register user
     //
-    //Future<ModelsUser> userRegisterPost(ModelsUserRegisterForm user) async
-    test('test userRegisterPost', () async {
+    //Future<ModelsUser> userRegisterUserPost(ModelsUserRegisterForm user) async
+    test('test userRegisterUserPost', () async {
       // TODO
     });
 
@@ -39,8 +39,8 @@ void main() {
     //
     // Update user info
     //
-    //Future<ModelsUser> userUpdatePatch(ModelsUser user) async
-    test('test userUpdatePatch', () async {
+    //Future<ModelsUser> userUpdateUserPatch(ModelsUser user) async
+    test('test userUpdateUserPatch', () async {
       // TODO
     });
 

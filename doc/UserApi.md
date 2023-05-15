@@ -5,13 +5,13 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userLoginPost**](UserApi.md#userloginpost) | **POST** /user/login | Login user
-[**userRegisterPost**](UserApi.md#userregisterpost) | **POST** /user/register | Register new user
-[**userUpdatePatch**](UserApi.md#userupdatepatch) | **PATCH** /user/update | Update user info
+[**userPatch**](UserApi.md#userpatch) | **PATCH** /user | Update user info
+[**userPost**](UserApi.md#userpost) | **POST** /user | Register new user
 
 
 # **userLoginPost**
@@ -57,51 +57,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userRegisterPost**
-> ModelsUser userRegisterPost(user)
-
-Register new user
-
-Register user
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-
-final api_instance = UserApi();
-final user = ModelsUserRegisterForm(); // ModelsUserRegisterForm | register new user
-
-try {
-    final result = api_instance.userRegisterPost(user);
-    print(result);
-} catch (e) {
-    print('Exception when calling UserApi->userRegisterPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**ModelsUserRegisterForm**](ModelsUserRegisterForm.md)| register new user | 
-
-### Return type
-
-[**ModelsUser**](ModelsUser.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **userUpdatePatch**
-> ModelsUser userUpdatePatch(user)
+# **userPatch**
+> ModelsUser userPatch(user)
 
 Update user info
 
@@ -119,10 +76,10 @@ final api_instance = UserApi();
 final user = ModelsUser(); // ModelsUser | Update user
 
 try {
-    final result = api_instance.userUpdatePatch(user);
+    final result = api_instance.userPatch(user);
     print(result);
 } catch (e) {
-    print('Exception when calling UserApi->userUpdatePatch: $e\n');
+    print('Exception when calling UserApi->userPatch: $e\n');
 }
 ```
 
@@ -139,6 +96,49 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userPost**
+> ModelsUser userPost(user)
+
+Register new user
+
+Register user
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api_instance = UserApi();
+final user = ModelsUserRegisterForm(); // ModelsUserRegisterForm | RegisterUser new user
+
+try {
+    final result = api_instance.userPost(user);
+    print(result);
+} catch (e) {
+    print('Exception when calling UserApi->userPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**ModelsUserRegisterForm**](ModelsUserRegisterForm.md)| RegisterUser new user | 
+
+### Return type
+
+[**ModelsUser**](ModelsUser.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

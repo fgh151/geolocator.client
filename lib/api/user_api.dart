@@ -74,64 +74,6 @@ class UserApi {
     return null;
   }
 
-  /// Register new user
-  ///
-  /// Register user
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [ModelsUserRegisterForm] user (required):
-  ///   register new user
-  Future<Response> userRegisterPostWithHttpInfo(ModelsUserRegisterForm user,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/user/register';
-
-    // ignore: prefer_final_locals
-    Object? postBody = user;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Register new user
-  ///
-  /// Register user
-  ///
-  /// Parameters:
-  ///
-  /// * [ModelsUserRegisterForm] user (required):
-  ///   register new user
-  Future<ModelsUser?> userRegisterPost(ModelsUserRegisterForm user,) async {
-    final response = await userRegisterPostWithHttpInfo(user,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsUser',) as ModelsUser;
-    
-    }
-    return null;
-  }
-
   /// Update user info
   ///
   /// Update user info
@@ -142,9 +84,9 @@ class UserApi {
   ///
   /// * [ModelsUser] user (required):
   ///   Update user
-  Future<Response> userUpdatePatchWithHttpInfo(ModelsUser user,) async {
+  Future<Response> userPatchWithHttpInfo(ModelsUser user,) async {
     // ignore: prefer_const_declarations
-    final path = r'/user/update';
+    final path = r'/user';
 
     // ignore: prefer_final_locals
     Object? postBody = user;
@@ -175,8 +117,66 @@ class UserApi {
   ///
   /// * [ModelsUser] user (required):
   ///   Update user
-  Future<ModelsUser?> userUpdatePatch(ModelsUser user,) async {
-    final response = await userUpdatePatchWithHttpInfo(user,);
+  Future<ModelsUser?> userPatch(ModelsUser user,) async {
+    final response = await userPatchWithHttpInfo(user,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelsUser',) as ModelsUser;
+    
+    }
+    return null;
+  }
+
+  /// Register new user
+  ///
+  /// Register user
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ModelsUserRegisterForm] user (required):
+  ///   RegisterUser new user
+  Future<Response> userPostWithHttpInfo(ModelsUserRegisterForm user,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/user';
+
+    // ignore: prefer_final_locals
+    Object? postBody = user;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Register new user
+  ///
+  /// Register user
+  ///
+  /// Parameters:
+  ///
+  /// * [ModelsUserRegisterForm] user (required):
+  ///   RegisterUser new user
+  Future<ModelsUser?> userPost(ModelsUserRegisterForm user,) async {
+    final response = await userPostWithHttpInfo(user,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
